@@ -20,7 +20,7 @@ export async function Header() {
       <div className="container flex h-14 max-w-5xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2" aria-label="HiloHub Home">
           <MessageSquareDashed className="h-6 w-6 text-primary" />
-          <span className="font-bold font-headline text-lg text-foreground">HiloHub</span>
+          <span className="font-bold font-headline text-lg text-foreground">ST8</span>
         </Link>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

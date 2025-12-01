@@ -190,7 +190,7 @@ const buttonVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_
         variant: {
             default: "bg-primary text-primary-foreground hover:bg-primary/90",
             destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-            outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+            outline: "border border-input bg-background  hover:text-accent",
             secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
             ghost: "hover:bg-accent hover:text-accent-foreground",
             link: "text-primary underline-offset-4 hover:underline"
@@ -494,7 +494,7 @@ async function Header() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             className: "font-bold font-headline text-lg text-foreground",
-                            children: "HiloHub"
+                            children: "ST8"
                         }, void 0, false, {
                             fileName: "[project]/src/components/layout/Header.tsx",
                             lineNumber: 23,
@@ -671,7 +671,7 @@ function Footer() {
                 children: [
                     "© ",
                     new Date().getFullYear(),
-                    " HiloHub. All rights reserved."
+                    " St8. All rights reserved."
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/layout/Footer.tsx",

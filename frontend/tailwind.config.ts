@@ -10,8 +10,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        display: ['var(--font-display)'], // Momo Trust Display
+        heading: ['var(--font-heading)'], // Bebas Neue
+        strong: ['var(--font-strong)'],   // Archive Black
+        body: ['var(--font-body)'],       // Lato
         code: ['monospace'],
       },
       colors: {
