@@ -1,9 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap');
+
 @font-face {
   font-family: "Momo Trust Display";
   src: url("/fonts/MomoTrustDisplay.woff2") format("woff2");
 }
+
 @font-face {
   font-family: "Archive Black";
   src: url("/fonts/ArchiveBlack.woff2") format("woff2");
@@ -15,7 +16,7 @@
 
 @layer base {
   :root {
-    /* 🎨 Paleta de colores oscuros elegantes */
+    /* 🎨 Paleta de colores oscuros elegantes (sin cambios) */
     --background: 220 10% 8%;
     --foreground: 270 20% 96%;
     --card: 220 8% 12%;
@@ -23,29 +24,32 @@
     --popover: 220 8% 12%;
     --popover-foreground: 270 20% 96%;
     --border: 220 8% 18%;
+    --border-input: 0 100% 64%;
     --input: 220 8% 18%;
 
-    --primary: 270 100% 65%;
-    --primary-foreground: 270 100% 10%;
+    /* 🎨 Botones y labels con colores del logo */
+    --primary: 203, 100%, 30%;
+    /* Azul para botones primarios */
+    --primary-foreground: 0, 0%, 100%;
+    --destructive: 0, 100%, 64%;
+    /* Rojo solo para botones destructivos */
+    --destructive-foreground: 0, 100%, 64%;
+
+    /* Otros colores siguen iguales */
     --secondary: 240 100% 60%;
     --secondary-foreground: 240 100% 95%;
-    --accent: 280 100% 70%;
-    --accent-foreground: 280 100% 10%;
+    --accent: 0, 100%, 64%;
+    --accent-foreground: 0, 100%, 64%;
     --muted: 220 8% 20%;
     --muted-foreground: 270 10% 70%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
     --button: 0 0% 95%;
     --button-secondary: 0 0% 70%;
-
     --ring: 270 100% 65%;
     --chart-1: 270 100% 65%;
     --chart-2: 240 100% 60%;
     --chart-3: 290 100% 70%;
     --chart-4: 210 100% 50%;
     --chart-5: 200 100% 40%;
-
     --radius: 0.5rem;
 
     /* 🖋️ Fuentes */
@@ -63,15 +67,12 @@
     --card-foreground: 270 20% 96%;
     --border: 220 8% 15%;
     --input: 220 8% 15%;
-    --primary: 270 100% 70%;
-    --primary-foreground: 270 100% 10%;
-    --secondary: 240 100% 65%;
-    --secondary-foreground: 240 100% 95%;
-    --accent: 280 100% 75%;
-    --accent-foreground: 280 100% 10%;
-    --muted: 220 8% 15%;
-    --muted-foreground: 270 10% 70%;
-    --ring: 270 100% 70%;
+
+    /* Botones en modo oscuro */
+    --primary: 203, 100%, 50%;
+    --primary-foreground: 0, 0%, 100%;
+    --destructive: 0, 100%, 64%;
+    --destructive-foreground: 0, 0%, 98%;
   }
 }
 
@@ -85,19 +86,44 @@
     font-family: Inter, var(--font-body) !important;
   }
 
-  h1, h2 {
+  h1,
+  h2 {
     font-family: var(--font-display);
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  h3, h4, h5, h6 {
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     letter-spacing: 0.05em;
   }
 
-  button, .btn, label {
+  button,
+  .btn,
+  label {
     font-family: var(--font-strong);
     letter-spacing: 0.03em;
+
+    /* Botones y labels primarios (azul logo) */
+    &.btn-primary {
+      @apply bg-logoBlue text-white;
+    }
+
+    &.btn-primary:hover {
+      @apply bg-logoBlue/90;
+    }
+
+    /* Botones y labels destructivos (rojo logo) */
+    &.btn-destructive {
+      @apply bg-logoRed text-white;
+    }
+
+    &.btn-destructive:hover {
+      @apply bg-logoRed/90;
+    }
   }
+
 }

@@ -11,17 +11,21 @@ import {
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { getCurrentUser } from '@/lib/data';
+import st8_logo from './media/st8_logo.jpg';
+import Image from 'next/image';
 
 export async function Header() {
   const currentUser = await getCurrentUser();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-5xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" aria-label="HiloHub Home">
-          <MessageSquareDashed className="h-6 w-6 text-primary" />
-          <span className="font-bold font-headline text-lg text-foreground">ST8</span>
-        </Link>
+    <header className="sticky top-0 z-50 w-full !important bg-black border-b border-border/40  backdrop-blur supports-[backdrop-filter]:">
+      <div className="container flex h-20 max-w-5xl items-center justify-between !important bg-black">
+        <a href="/" className="flex items-center gap-2" aria-label="HiloHub Home">
+          <Image src={st8_logo} alt="Logo ST8" className="w-20" />
+        </a>
+
+
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -48,7 +52,7 @@ export async function Header() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      </div>
-    </header>
+      </div >
+    </header >
   );
 }
