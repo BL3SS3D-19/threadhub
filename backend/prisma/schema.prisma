@@ -1,0 +1,63 @@
+// backend/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  email     String   @unique
+  avatarUrl String?  @map("avatar_url")
+  password  String
+  
+  threads   Thread[]
+  replies   Reply[]
+  
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Thread {
+  id             String   @id @default(uuid())
+  title          String   @db.VarChar(255)
+  content        String   @db.Text
+  
+  authorId       String   @map("author_id")
+  author         User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  
+  replies        Reply[]
+  
+  lastActivityAt DateTime @default(now()) @map("last_activity_at")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@index([lastActivityAt(sort: Desc)])
+  @@index([authorId])
+  @@map("threads")
+}
+
+model Reply {
+  id       String @id @default(uuid())
+  content  String @db.Text
+  
+  threadId String @map("thread_id")
+  thread   Thread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  
+  authorId String @map("author_id")
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([threadId])
+  @@index([authorId])
+  @@map("replies")
+}

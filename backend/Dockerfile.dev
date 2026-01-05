@@ -1,0 +1,26 @@
+# backend/Dockerfile.dev
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Instalar dependencias del sistema
+RUN apk add --no-cache libc6-compat openssl
+
+# Copiar archivos de dependencias
+COPY package*.json ./
+COPY prisma ./prisma/
+
+# Instalar dependencias
+RUN npm install
+
+# Generar cliente de Prisma
+RUN npx prisma generate
+
+# Copiar código fuente
+COPY . .
+
+# Exponer puerto
+EXPOSE 3000
+
+# Comando de desarrollo
+CMD ["npm", "run", "dev"]

@@ -24,9 +24,11 @@ export default function HomePage() {
                   Unete ahora
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="min-w-[200px]  hover:border-accent">
-                Descubre más
-              </Button>
+              <Link href="/threads">
+                <Button size="lg" variant="outline" className="min-w-[200px]  hover:border-accent">
+                  Descubre más
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

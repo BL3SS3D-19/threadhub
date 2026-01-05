@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'HiloHub',
+  title: 'ThreadHub',
   description: 'A place for discussions and threads.',
 };
 

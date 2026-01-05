@@ -785,7 +785,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$thre
 ;
 ;
 const metadata = {
-    title: 'HiloHub',
+    title: 'ThreadHub',
     description: 'A place for discussions and threads.'
 };
 function RootLayout({ children }) {

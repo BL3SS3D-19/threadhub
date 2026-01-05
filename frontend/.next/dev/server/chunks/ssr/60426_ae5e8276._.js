@@ -437,13 +437,13 @@ const arbitraryVariableRegex = /^\((?:(\w[\w-]*):)?(.+)\)$/i;
 const fractionRegex = /^\d+\/\d+$/;
 const tshirtUnitRegex = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/;
 const lengthUnitRegex = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/;
-const colorFunctionRegex = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix)\(.+\)$/;
+const colorFunctionRegex = /^(rgba?|hsla?|hwb|(ok)?(lab|lch))\(.+\)$/;
 // Shadow always begins with x and y offset separated by underscore optionally prepended by inset
 const shadowRegex = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
 const imageRegex = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/;
 const isFraction = (value)=>fractionRegex.test(value);
-const isNumber = (value)=>!!value && !Number.isNaN(Number(value));
-const isInteger = (value)=>!!value && Number.isInteger(Number(value));
+const isNumber = (value)=>Boolean(value) && !Number.isNaN(Number(value));
+const isInteger = (value)=>Boolean(value) && Number.isInteger(Number(value));
 const isPercent = (value)=>value.endsWith('%') && isNumber(value.slice(0, -1));
 const isTshirtSize = (value)=>tshirtUnitRegex.test(value);
 const isAny = ()=>true;
@@ -461,7 +461,7 @@ const isArbitraryLength = (value)=>getIsArbitraryValue(value, isLabelLength, isL
 const isArbitraryNumber = (value)=>getIsArbitraryValue(value, isLabelNumber, isNumber);
 const isArbitraryPosition = (value)=>getIsArbitraryValue(value, isLabelPosition, isNever);
 const isArbitraryImage = (value)=>getIsArbitraryValue(value, isLabelImage, isImage);
-const isArbitraryShadow = (value)=>getIsArbitraryValue(value, isLabelShadow, isShadow);
+const isArbitraryShadow = (value)=>getIsArbitraryValue(value, isNever, isShadow);
 const isArbitraryVariable = (value)=>arbitraryVariableRegex.test(value);
 const isArbitraryVariableLength = (value)=>getIsArbitraryVariable(value, isLabelLength);
 const isArbitraryVariableFamilyName = (value)=>getIsArbitraryVariable(value, isLabelFamilyName);
@@ -491,9 +491,18 @@ const getIsArbitraryVariable = (value, testLabel, shouldMatchNoLabel = false)=>{
     return false;
 };
 // Labels
-const isLabelPosition = (label)=>label === 'position' || label === 'percentage';
-const isLabelImage = (label)=>label === 'image' || label === 'url';
-const isLabelSize = (label)=>label === 'length' || label === 'size' || label === 'bg-size';
+const isLabelPosition = (label)=>label === 'position';
+const imageLabels = /*#__PURE__*/ new Set([
+    'image',
+    'url'
+]);
+const isLabelImage = (label)=>imageLabels.has(label);
+const sizeLabels = /*#__PURE__*/ new Set([
+    'length',
+    'size',
+    'percentage'
+]);
+const isLabelSize = (label)=>sizeLabels.has(label);
 const isLabelLength = (label)=>label === 'length';
 const isLabelNumber = (label)=>label === 'number';
 const isLabelFamilyName = (label)=>label === 'family-name';
@@ -540,7 +549,6 @@ const getDefaultConfig = ()=>{
     const themeRadius = fromTheme('radius');
     const themeShadow = fromTheme('shadow');
     const themeInsetShadow = fromTheme('inset-shadow');
-    const themeTextShadow = fromTheme('text-shadow');
     const themeDropShadow = fromTheme('drop-shadow');
     const themeBlur = fromTheme('blur');
     const themePerspective = fromTheme('perspective');
@@ -563,28 +571,15 @@ const getDefaultConfig = ()=>{
             'column'
         ];
     const scalePosition = ()=>[
-            'center',
-            'top',
             'bottom',
+            'center',
             'left',
-            'right',
-            'top-left',
-            // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+            'left-bottom',
             'left-top',
-            'top-right',
-            // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-            'right-top',
-            'bottom-right',
-            // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+            'right',
             'right-bottom',
-            'bottom-left',
-            // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-            'left-bottom'
-        ];
-    const scalePositionWithArbitrary = ()=>[
-            ...scalePosition(),
-            isArbitraryVariable,
-            isArbitraryValue
+            'right-top',
+            'top'
         ];
     const scaleOverflow = ()=>[
             'auto',
@@ -598,16 +593,14 @@ const getDefaultConfig = ()=>{
             'contain',
             'none'
         ];
-    const scaleUnambiguousSpacing = ()=>[
+    const scaleInset = ()=>[
+            isFraction,
+            'px',
+            'full',
+            'auto',
             isArbitraryVariable,
             isArbitraryValue,
             themeSpacing
-        ];
-    const scaleInset = ()=>[
-            isFraction,
-            'full',
-            'auto',
-            ...scaleUnambiguousSpacing()
         ];
     const scaleGridTemplateColsRows = ()=>[
             isInteger,
@@ -626,7 +619,6 @@ const getDefaultConfig = ()=>{
                     isArbitraryValue
                 ]
             },
-            isInteger,
             isArbitraryVariable,
             isArbitraryValue
         ];
@@ -644,6 +636,11 @@ const getDefaultConfig = ()=>{
             isArbitraryVariable,
             isArbitraryValue
         ];
+    const scaleGap = ()=>[
+            isArbitraryVariable,
+            isArbitraryValue,
+            themeSpacing
+        ];
     const scaleAlignPrimaryAxis = ()=>[
             'start',
             'end',
@@ -652,25 +649,32 @@ const getDefaultConfig = ()=>{
             'around',
             'evenly',
             'stretch',
-            'baseline',
-            'center-safe',
-            'end-safe'
+            'baseline'
         ];
     const scaleAlignSecondaryAxis = ()=>[
             'start',
             'end',
             'center',
-            'stretch',
-            'center-safe',
-            'end-safe'
+            'stretch'
+        ];
+    const scaleUnambiguousSpacing = ()=>[
+            isArbitraryVariable,
+            isArbitraryValue,
+            themeSpacing
+        ];
+    const scalePadding = ()=>[
+            'px',
+            ...scaleUnambiguousSpacing()
         ];
     const scaleMargin = ()=>[
+            'px',
             'auto',
             ...scaleUnambiguousSpacing()
         ];
     const scaleSizing = ()=>[
             isFraction,
             'auto',
+            'px',
             'full',
             'dvw',
             'dvh',
@@ -681,52 +685,17 @@ const getDefaultConfig = ()=>{
             'min',
             'max',
             'fit',
-            ...scaleUnambiguousSpacing()
+            isArbitraryVariable,
+            isArbitraryValue,
+            themeSpacing
         ];
     const scaleColor = ()=>[
             themeColor,
             isArbitraryVariable,
             isArbitraryValue
         ];
-    const scaleBgPosition = ()=>[
-            ...scalePosition(),
-            isArbitraryVariablePosition,
-            isArbitraryPosition,
-            {
-                position: [
-                    isArbitraryVariable,
-                    isArbitraryValue
-                ]
-            }
-        ];
-    const scaleBgRepeat = ()=>[
-            'no-repeat',
-            {
-                repeat: [
-                    '',
-                    'x',
-                    'y',
-                    'space',
-                    'round'
-                ]
-            }
-        ];
-    const scaleBgSize = ()=>[
-            'auto',
-            'cover',
-            'contain',
-            isArbitraryVariableSize,
-            isArbitrarySize,
-            {
-                size: [
-                    isArbitraryVariable,
-                    isArbitraryValue
-                ]
-            }
-        ];
     const scaleGradientStopPosition = ()=>[
             isPercent,
-            isArbitraryVariableLength,
             isArbitraryLength
         ];
     const scaleRadius = ()=>[
@@ -768,17 +737,24 @@ const getDefaultConfig = ()=>{
             'color',
             'luminosity'
         ];
-    const scaleMaskImagePosition = ()=>[
-            isNumber,
-            isPercent,
-            isArbitraryVariablePosition,
-            isArbitraryPosition
-        ];
     const scaleBlur = ()=>[
             // Deprecated since Tailwind CSS v4.0.0
             '',
             'none',
             themeBlur,
+            isArbitraryVariable,
+            isArbitraryValue
+        ];
+    const scaleOrigin = ()=>[
+            'center',
+            'top',
+            'top-right',
+            'right',
+            'bottom-right',
+            'bottom',
+            'bottom-left',
+            'left',
+            'top-left',
             isArbitraryVariable,
             isArbitraryValue
         ];
@@ -802,7 +778,10 @@ const getDefaultConfig = ()=>{
     const scaleTranslate = ()=>[
             isFraction,
             'full',
-            ...scaleUnambiguousSpacing()
+            'px',
+            isArbitraryVariable,
+            isArbitraryValue,
+            themeSpacing
         ];
     return {
         cacheSize: 500,
@@ -876,13 +855,9 @@ const getDefaultConfig = ()=>{
                 isTshirtSize
             ],
             spacing: [
-                'px',
                 isNumber
             ],
             text: [
-                isTshirtSize
-            ],
-            'text-shadow': [
                 isTshirtSize
             ],
             tracking: [
@@ -1072,7 +1047,11 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/object-position
        */ 'object-position': [
                 {
-                    object: scalePositionWithArbitrary()
+                    object: [
+                        ...scalePosition(),
+                        isArbitraryValue,
+                        isArbitraryVariable
+                    ]
                 }
             ],
             /**
@@ -1238,8 +1217,10 @@ const getDefaultConfig = ()=>{
                         isFraction,
                         'full',
                         'auto',
+                        isArbitraryVariable,
+                        isArbitraryValue,
                         themeContainer,
-                        ...scaleUnambiguousSpacing()
+                        themeSpacing
                     ]
                 }
             ],
@@ -1423,7 +1404,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/gap
        */ gap: [
                 {
-                    gap: scaleUnambiguousSpacing()
+                    gap: scaleGap()
                 }
             ],
             /**
@@ -1431,7 +1412,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/gap
        */ 'gap-x': [
                 {
-                    'gap-x': scaleUnambiguousSpacing()
+                    'gap-x': scaleGap()
                 }
             ],
             /**
@@ -1439,7 +1420,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/gap
        */ 'gap-y': [
                 {
-                    'gap-y': scaleUnambiguousSpacing()
+                    'gap-y': scaleGap()
                 }
             ],
             /**
@@ -1493,12 +1474,7 @@ const getDefaultConfig = ()=>{
                 {
                     items: [
                         ...scaleAlignSecondaryAxis(),
-                        {
-                            baseline: [
-                                '',
-                                'last'
-                            ]
-                        }
+                        'baseline'
                     ]
                 }
             ],
@@ -1510,12 +1486,7 @@ const getDefaultConfig = ()=>{
                     self: [
                         'auto',
                         ...scaleAlignSecondaryAxis(),
-                        {
-                            baseline: [
-                                '',
-                                'last'
-                            ]
-                        }
+                        'baseline'
                     ]
                 }
             ],
@@ -1555,7 +1526,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ p: [
                 {
-                    p: scaleUnambiguousSpacing()
+                    p: scalePadding()
                 }
             ],
             /**
@@ -1563,7 +1534,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ px: [
                 {
-                    px: scaleUnambiguousSpacing()
+                    px: scalePadding()
                 }
             ],
             /**
@@ -1571,7 +1542,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ py: [
                 {
-                    py: scaleUnambiguousSpacing()
+                    py: scalePadding()
                 }
             ],
             /**
@@ -1579,7 +1550,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ ps: [
                 {
-                    ps: scaleUnambiguousSpacing()
+                    ps: scalePadding()
                 }
             ],
             /**
@@ -1587,7 +1558,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ pe: [
                 {
-                    pe: scaleUnambiguousSpacing()
+                    pe: scalePadding()
                 }
             ],
             /**
@@ -1595,7 +1566,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ pt: [
                 {
-                    pt: scaleUnambiguousSpacing()
+                    pt: scalePadding()
                 }
             ],
             /**
@@ -1603,7 +1574,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ pr: [
                 {
-                    pr: scaleUnambiguousSpacing()
+                    pr: scalePadding()
                 }
             ],
             /**
@@ -1611,7 +1582,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ pb: [
                 {
-                    pb: scaleUnambiguousSpacing()
+                    pb: scalePadding()
                 }
             ],
             /**
@@ -1619,7 +1590,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/padding
        */ pl: [
                 {
-                    pl: scaleUnambiguousSpacing()
+                    pl: scalePadding()
                 }
             ],
             /**
@@ -1726,6 +1697,9 @@ const getDefaultConfig = ()=>{
             // --- Sizing ---
             // --------------
             /**
+       * Width
+       * @see https://tailwindcss.com/docs/width
+       */ /**
        * Size
        * @see https://tailwindcss.com/docs/width#setting-both-width-and-height
        */ size: [
@@ -1733,10 +1707,7 @@ const getDefaultConfig = ()=>{
                     size: scaleSizing()
                 }
             ],
-            /**
-       * Width
-       * @see https://tailwindcss.com/docs/width
-       */ w: [
+            w: [
                 {
                     w: [
                         themeContainer,
@@ -1784,7 +1755,6 @@ const getDefaultConfig = ()=>{
                 {
                     h: [
                         'screen',
-                        'lh',
                         ...scaleSizing()
                     ]
                 }
@@ -1796,7 +1766,6 @@ const getDefaultConfig = ()=>{
                 {
                     'min-h': [
                         'screen',
-                        'lh',
                         'none',
                         ...scaleSizing()
                     ]
@@ -1809,7 +1778,6 @@ const getDefaultConfig = ()=>{
                 {
                     'max-h': [
                         'screen',
-                        'lh',
                         ...scaleSizing()
                     ]
                 }
@@ -1958,8 +1926,10 @@ const getDefaultConfig = ()=>{
        */ leading: [
                 {
                     leading: [
+                        isArbitraryVariable,
+                        isArbitraryValue,
                         /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */ themeLeading,
-                        ...scaleUnambiguousSpacing()
+                        themeSpacing
                     ]
                 }
             ],
@@ -2122,7 +2092,10 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/text-indent
        */ indent: [
                 {
-                    indent: scaleUnambiguousSpacing()
+                    indent: [
+                        'px',
+                        ...scaleUnambiguousSpacing()
+                    ]
                 }
             ],
             /**
@@ -2169,18 +2142,6 @@ const getDefaultConfig = ()=>{
                         'words',
                         'all',
                         'keep'
-                    ]
-                }
-            ],
-            /**
-       * Overflow Wrap
-       * @see https://tailwindcss.com/docs/overflow-wrap
-       */ wrap: [
-                {
-                    wrap: [
-                        'break-word',
-                        'anywhere',
-                        'normal'
                     ]
                 }
             ],
@@ -2253,7 +2214,11 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/background-position
        */ 'bg-position': [
                 {
-                    bg: scaleBgPosition()
+                    bg: [
+                        ...scalePosition(),
+                        isArbitraryVariablePosition,
+                        isArbitraryPosition
+                    ]
                 }
             ],
             /**
@@ -2261,7 +2226,18 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/background-repeat
        */ 'bg-repeat': [
                 {
-                    bg: scaleBgRepeat()
+                    bg: [
+                        'no-repeat',
+                        {
+                            repeat: [
+                                '',
+                                'x',
+                                'y',
+                                'space',
+                                'round'
+                            ]
+                        }
+                    ]
                 }
             ],
             /**
@@ -2269,7 +2245,13 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/background-size
        */ 'bg-size': [
                 {
-                    bg: scaleBgSize()
+                    bg: [
+                        'auto',
+                        'cover',
+                        'contain',
+                        isArbitraryVariableSize,
+                        isArbitrarySize
+                    ]
                 }
             ],
             /**
@@ -2738,7 +2720,9 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/outline-color
        */ 'outline-color': [
                 {
-                    outline: scaleColor()
+                    outline: [
+                        themeColor
+                    ]
                 }
             ],
             // ---------------
@@ -2774,9 +2758,9 @@ const getDefaultConfig = ()=>{
                 {
                     'inset-shadow': [
                         'none',
-                        themeInsetShadow,
-                        isArbitraryVariableShadow,
-                        isArbitraryShadow
+                        isArbitraryVariable,
+                        isArbitraryValue,
+                        themeInsetShadow
                     ]
                 }
             ],
@@ -2852,27 +2836,6 @@ const getDefaultConfig = ()=>{
                 }
             ],
             /**
-       * Text Shadow
-       * @see https://tailwindcss.com/docs/text-shadow
-       */ 'text-shadow': [
-                {
-                    'text-shadow': [
-                        'none',
-                        themeTextShadow,
-                        isArbitraryVariableShadow,
-                        isArbitraryShadow
-                    ]
-                }
-            ],
-            /**
-       * Text Shadow Color
-       * @see https://tailwindcss.com/docs/text-shadow#setting-the-shadow-color
-       */ 'text-shadow-color': [
-                {
-                    'text-shadow': scaleColor()
-                }
-            ],
-            /**
        * Opacity
        * @see https://tailwindcss.com/docs/opacity
        */ opacity: [
@@ -2902,343 +2865,6 @@ const getDefaultConfig = ()=>{
        */ 'bg-blend': [
                 {
                     'bg-blend': scaleBlendMode()
-                }
-            ],
-            /**
-       * Mask Clip
-       * @see https://tailwindcss.com/docs/mask-clip
-       */ 'mask-clip': [
-                {
-                    'mask-clip': [
-                        'border',
-                        'padding',
-                        'content',
-                        'fill',
-                        'stroke',
-                        'view'
-                    ]
-                },
-                'mask-no-clip'
-            ],
-            /**
-       * Mask Composite
-       * @see https://tailwindcss.com/docs/mask-composite
-       */ 'mask-composite': [
-                {
-                    mask: [
-                        'add',
-                        'subtract',
-                        'intersect',
-                        'exclude'
-                    ]
-                }
-            ],
-            /**
-       * Mask Image
-       * @see https://tailwindcss.com/docs/mask-image
-       */ 'mask-image-linear-pos': [
-                {
-                    'mask-linear': [
-                        isNumber
-                    ]
-                }
-            ],
-            'mask-image-linear-from-pos': [
-                {
-                    'mask-linear-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-linear-to-pos': [
-                {
-                    'mask-linear-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-linear-from-color': [
-                {
-                    'mask-linear-from': scaleColor()
-                }
-            ],
-            'mask-image-linear-to-color': [
-                {
-                    'mask-linear-to': scaleColor()
-                }
-            ],
-            'mask-image-t-from-pos': [
-                {
-                    'mask-t-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-t-to-pos': [
-                {
-                    'mask-t-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-t-from-color': [
-                {
-                    'mask-t-from': scaleColor()
-                }
-            ],
-            'mask-image-t-to-color': [
-                {
-                    'mask-t-to': scaleColor()
-                }
-            ],
-            'mask-image-r-from-pos': [
-                {
-                    'mask-r-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-r-to-pos': [
-                {
-                    'mask-r-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-r-from-color': [
-                {
-                    'mask-r-from': scaleColor()
-                }
-            ],
-            'mask-image-r-to-color': [
-                {
-                    'mask-r-to': scaleColor()
-                }
-            ],
-            'mask-image-b-from-pos': [
-                {
-                    'mask-b-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-b-to-pos': [
-                {
-                    'mask-b-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-b-from-color': [
-                {
-                    'mask-b-from': scaleColor()
-                }
-            ],
-            'mask-image-b-to-color': [
-                {
-                    'mask-b-to': scaleColor()
-                }
-            ],
-            'mask-image-l-from-pos': [
-                {
-                    'mask-l-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-l-to-pos': [
-                {
-                    'mask-l-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-l-from-color': [
-                {
-                    'mask-l-from': scaleColor()
-                }
-            ],
-            'mask-image-l-to-color': [
-                {
-                    'mask-l-to': scaleColor()
-                }
-            ],
-            'mask-image-x-from-pos': [
-                {
-                    'mask-x-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-x-to-pos': [
-                {
-                    'mask-x-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-x-from-color': [
-                {
-                    'mask-x-from': scaleColor()
-                }
-            ],
-            'mask-image-x-to-color': [
-                {
-                    'mask-x-to': scaleColor()
-                }
-            ],
-            'mask-image-y-from-pos': [
-                {
-                    'mask-y-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-y-to-pos': [
-                {
-                    'mask-y-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-y-from-color': [
-                {
-                    'mask-y-from': scaleColor()
-                }
-            ],
-            'mask-image-y-to-color': [
-                {
-                    'mask-y-to': scaleColor()
-                }
-            ],
-            'mask-image-radial': [
-                {
-                    'mask-radial': [
-                        isArbitraryVariable,
-                        isArbitraryValue
-                    ]
-                }
-            ],
-            'mask-image-radial-from-pos': [
-                {
-                    'mask-radial-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-radial-to-pos': [
-                {
-                    'mask-radial-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-radial-from-color': [
-                {
-                    'mask-radial-from': scaleColor()
-                }
-            ],
-            'mask-image-radial-to-color': [
-                {
-                    'mask-radial-to': scaleColor()
-                }
-            ],
-            'mask-image-radial-shape': [
-                {
-                    'mask-radial': [
-                        'circle',
-                        'ellipse'
-                    ]
-                }
-            ],
-            'mask-image-radial-size': [
-                {
-                    'mask-radial': [
-                        {
-                            closest: [
-                                'side',
-                                'corner'
-                            ],
-                            farthest: [
-                                'side',
-                                'corner'
-                            ]
-                        }
-                    ]
-                }
-            ],
-            'mask-image-radial-pos': [
-                {
-                    'mask-radial-at': scalePosition()
-                }
-            ],
-            'mask-image-conic-pos': [
-                {
-                    'mask-conic': [
-                        isNumber
-                    ]
-                }
-            ],
-            'mask-image-conic-from-pos': [
-                {
-                    'mask-conic-from': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-conic-to-pos': [
-                {
-                    'mask-conic-to': scaleMaskImagePosition()
-                }
-            ],
-            'mask-image-conic-from-color': [
-                {
-                    'mask-conic-from': scaleColor()
-                }
-            ],
-            'mask-image-conic-to-color': [
-                {
-                    'mask-conic-to': scaleColor()
-                }
-            ],
-            /**
-       * Mask Mode
-       * @see https://tailwindcss.com/docs/mask-mode
-       */ 'mask-mode': [
-                {
-                    mask: [
-                        'alpha',
-                        'luminance',
-                        'match'
-                    ]
-                }
-            ],
-            /**
-       * Mask Origin
-       * @see https://tailwindcss.com/docs/mask-origin
-       */ 'mask-origin': [
-                {
-                    'mask-origin': [
-                        'border',
-                        'padding',
-                        'content',
-                        'fill',
-                        'stroke',
-                        'view'
-                    ]
-                }
-            ],
-            /**
-       * Mask Position
-       * @see https://tailwindcss.com/docs/mask-position
-       */ 'mask-position': [
-                {
-                    mask: scaleBgPosition()
-                }
-            ],
-            /**
-       * Mask Repeat
-       * @see https://tailwindcss.com/docs/mask-repeat
-       */ 'mask-repeat': [
-                {
-                    mask: scaleBgRepeat()
-                }
-            ],
-            /**
-       * Mask Size
-       * @see https://tailwindcss.com/docs/mask-size
-       */ 'mask-size': [
-                {
-                    mask: scaleBgSize()
-                }
-            ],
-            /**
-       * Mask Type
-       * @see https://tailwindcss.com/docs/mask-type
-       */ 'mask-type': [
-                {
-                    'mask-type': [
-                        'alpha',
-                        'luminance'
-                    ]
-                }
-            ],
-            /**
-       * Mask Image
-       * @see https://tailwindcss.com/docs/mask-image
-       */ 'mask-image': [
-                {
-                    mask: [
-                        'none',
-                        isArbitraryVariable,
-                        isArbitraryValue
-                    ]
                 }
             ],
             // ---------------
@@ -3300,17 +2926,9 @@ const getDefaultConfig = ()=>{
                         '',
                         'none',
                         themeDropShadow,
-                        isArbitraryVariableShadow,
-                        isArbitraryShadow
+                        isArbitraryVariable,
+                        isArbitraryValue
                     ]
-                }
-            ],
-            /**
-       * Drop Shadow Color
-       * @see https://tailwindcss.com/docs/filter-drop-shadow#setting-the-shadow-color
-       */ 'drop-shadow-color': [
-                {
-                    'drop-shadow': scaleColor()
                 }
             ],
             /**
@@ -3672,7 +3290,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/perspective-origin
        */ 'perspective-origin': [
                 {
-                    'perspective-origin': scalePositionWithArbitrary()
+                    'perspective-origin': scaleOrigin()
                 }
             ],
             /**
@@ -3789,7 +3407,7 @@ const getDefaultConfig = ()=>{
        * @see https://tailwindcss.com/docs/transform-origin
        */ 'transform-origin': [
                 {
-                    origin: scalePositionWithArbitrary()
+                    origin: scaleOrigin()
                 }
             ],
             /**
@@ -4444,8 +4062,6 @@ const getDefaultConfig = ()=>{
                 'border-spacing-y'
             ],
             'border-w': [
-                'border-w-x',
-                'border-w-y',
                 'border-w-s',
                 'border-w-e',
                 'border-w-t',
@@ -4462,8 +4078,6 @@ const getDefaultConfig = ()=>{
                 'border-w-b'
             ],
             'border-color': [
-                'border-color-x',
-                'border-color-y',
                 'border-color-s',
                 'border-color-e',
                 'border-color-t',
@@ -4547,18 +4161,17 @@ const getDefaultConfig = ()=>{
             ]
         },
         orderSensitiveModifiers: [
-            '*',
-            '**',
-            'after',
-            'backdrop',
             'before',
-            'details-content',
-            'file',
-            'first-letter',
-            'first-line',
-            'marker',
+            'after',
             'placeholder',
-            'selection'
+            'file',
+            'marker',
+            'selection',
+            'first-line',
+            'first-letter',
+            'backdrop',
+            '*',
+            '**'
         ]
     };
 };
