@@ -1,20 +1,4 @@
 {
-  "node": {
-    "601d2a4f6467522241f59d0cc3decfddf6b20e2d7e": {
-      "workers": {
-        "app/threads/page": {
-          "moduleId": "[project]/Desktop/proyectos/threadhub/frontend/.next-internal/server/app/threads/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/proyectos/threadhub/frontend/src/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "createThreadAction",
-          "filename": "Desktop/proyectos/threadhub/frontend/src/lib/actions.ts"
-        }
-      },
-      "layer": {
-        "app/threads/page": "action-browser"
-      },
-      "exportedName": "createThreadAction",
-      "filename": "Desktop/proyectos/threadhub/frontend/src/lib/actions.ts"
-    }
-  },
+  "node": {},
   "edge": {}
 }

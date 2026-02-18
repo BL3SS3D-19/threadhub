@@ -30,7 +30,7 @@
     /* 🎨 Botones y labels con colores del logo */
     --primary: 203, 100%, 30%;
     /* Azul para botones primarios */
-    --primary-foreground: 0, 0%, 100%;
+    --primary-foreground: #170fdb;
     --destructive: 0, 100%, 64%;
     /* Rojo solo para botones destructivos */
     --destructive-foreground: 0, 100%, 64%;

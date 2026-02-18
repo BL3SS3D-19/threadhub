@@ -9,5 +9,12 @@
     "docker:rebuild": "docker-compose up --build -d",
     "db:migrate": "cd backend && npx prisma migrate dev",
     "db:studio": "cd backend && npx prisma studio"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "prisma": "^7.4.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.4.0"
   }
 }

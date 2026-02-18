@@ -155,7 +155,7 @@ function HomePage() {
                                         href: "/auth",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
                                             size: "lg",
-                                            className: "min-w-[200px]  border hover:text-primary-foreground",
+                                            className: "min-w-[200px] ",
                                             children: "Unete ahora"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -355,7 +355,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl text-primary font-semibold",
+                                            className: "mb-2 text-xl text-[#170fdb] font-semibold",
                                             children: "Herramientas y Productos"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -363,7 +363,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: " text-[#7FC0FF]",
+                                            className: " text-[#fff]",
                                             children: "Descubre y comparte información sobre las mejores herramientas y productos del mercado. Reseñas reales de profesionales."
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -394,7 +394,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl font-semibold text-primary",
+                                            className: "mb-2 text-xl font-semibold text-[#170fdb]",
                                             children: "Formación Profesional"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -402,7 +402,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#7FC0FF]",
+                                            className: "text-[#fff]",
                                             children: "Accede a información sobre cursos, talleres y formaciones especializadas para mejorar tus técnicas y habilidades."
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -433,7 +433,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl font-semibold text-primary",
+                                            className: "mb-2 text-xl font-semibold text-[#170fdb]",
                                             children: "Tendencias"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -441,7 +441,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#7FC0FF]",
+                                            className: "text-[#fff]",
                                             children: "Mantente actualizado con las últimas tendencias en cortes, estilos y técnicas de barbería a nivel nacional e internacional."
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -472,7 +472,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl font-semibold text-primary",
+                                            className: "mb-2 text-xl font-semibold text-[#170fdb]",
                                             children: "Eventos y Competiciones"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -480,7 +480,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#7FC0FF] ",
+                                            className: "text-[#fff] ",
                                             children: "Entérate de eventos, competiciones y encuentros profesionales en toda España. No te pierdas ninguna oportunidad."
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -511,7 +511,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl font-semibold text-primary",
+                                            className: "mb-2 text-xl font-semibold text-[#170fdb]",
                                             children: "Networking Profesional"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -519,7 +519,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#7FC0FF]",
+                                            className: "text-[#fff]",
                                             children: "Establece contactos con otros profesionales, encuentra oportunidades de negocio y crea alianzas estratégicas."
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -550,7 +550,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl font-semibold text-primary",
+                                            className: "mb-2 text-xl font-semibold text-[#170fdb]",
                                             children: "Experiencias Reales"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -558,7 +558,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#7FC0FF]",
+                                            className: "text-[#fff]",
                                             children: "Lee y comparte experiencias reales de otros barberos. Aprende de casos de éxito y evita errores comunes."
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -633,7 +633,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl font-semibold text-primary",
+                                            className: "mb-2 text-xl font-semibold text-[#170fdb]",
                                             children: "Regístrate"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -641,7 +641,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#7FC0FF]",
+                                            className: "text-[#fff]",
                                             children: "Crea tu perfil profesional y únete a la comunidad exclusiva"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -666,7 +666,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl font-semibold text-primary",
+                                            className: "mb-2 text-xl font-semibold text-[#170fdb]",
                                             children: "Conecta"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -674,7 +674,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#7FC0FF]",
+                                            className: "text-[#fff]",
                                             children: "Encuentra y conecta con barberos de tu zona o de toda España"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -699,7 +699,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "mb-2 text-xl font-semibold text-primary  ",
+                                            className: "mb-2 text-xl font-semibold text-[#170fdb]  ",
                                             children: "Crece"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -707,7 +707,7 @@ function HomePage() {
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-[#7FC0FF] ",
+                                            className: "text-[#fff] ",
                                             children: "Comparte conocimientos, aprende y haz crecer tu negocio"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -752,7 +752,7 @@ function HomePage() {
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                className: "mb-4 text-balance text-primary text-3xl font-bold md:text-4xl",
+                                className: "mb-4 text-balance text-[#170fdb] text-3xl font-bold md:text-4xl",
                                 children: "Únete a la comunidad hoy"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
@@ -761,7 +761,7 @@ function HomePage() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "mb-8 text-pretty text-lg text-muted-foreground",
-                                children: "Miles de barberos ya están conectados y haciendo crecer sus negocios. ¿A qué esperas?"
+                                children: "Miles de barberos ya están conectados y haciendo crecer sus negocios.¿A qué esperas?"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",
                                 lineNumber: 182,
@@ -771,7 +771,7 @@ function HomePage() {
                                 href: "/auth",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
                                     size: "lg",
-                                    className: "min-w-[250px] hover:text-primary-foreground",
+                                    className: "min-w-[250px]",
                                     children: "Comenzar ahora"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/app/page.tsx",

@@ -20,7 +20,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
 
               <Link href="/auth">
-                <Button size="lg" className="min-w-[200px]  border hover:text-primary-foreground">
+                <Button size="lg" className="min-w-[200px] ">
                   Unete ahora
                 </Button>
               </Link>
@@ -71,8 +71,8 @@ export default function HomePage() {
               <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
                 <Scissors className="h-6 w-6 text-[#FF3333]" />
               </div>
-              <h3 className="mb-2 text-xl text-primary font-semibold">Herramientas y Productos</h3>
-              <p className=" text-[#7FC0FF]">
+              <h3 className="mb-2 text-xl text-[#170fdb] font-semibold">Herramientas y Productos</h3>
+              <p className=" text-[#fff]">
                 Descubre y comparte información sobre las mejores herramientas y productos del mercado. Reseñas reales
                 de profesionales.
               </p>
@@ -82,8 +82,8 @@ export default function HomePage() {
               <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
                 <BookOpen className="h-6 w-6 text-[#FF3333]" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-primary">Formación Profesional</h3>
-              <p className="text-[#7FC0FF]">
+              <h3 className="mb-2 text-xl font-semibold text-[#170fdb]">Formación Profesional</h3>
+              <p className="text-[#fff]">
                 Accede a información sobre cursos, talleres y formaciones especializadas para mejorar tus técnicas y
                 habilidades.
               </p>
@@ -93,8 +93,8 @@ export default function HomePage() {
               <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
                 <TrendingUp className="h-6 w-6 text-[#FF3333]" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-primary">Tendencias</h3>
-              <p className="text-[#7FC0FF]">
+              <h3 className="mb-2 text-xl font-semibold text-[#170fdb]">Tendencias</h3>
+              <p className="text-[#fff]">
                 Mantente actualizado con las últimas tendencias en cortes, estilos y técnicas de barbería a nivel
                 nacional e internacional.
               </p>
@@ -104,8 +104,8 @@ export default function HomePage() {
               <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
                 <Calendar className="h-6 w-6 text-[#FF3333]" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-primary">Eventos y Competiciones</h3>
-              <p className="text-[#7FC0FF] ">
+              <h3 className="mb-2 text-xl font-semibold text-[#170fdb]">Eventos y Competiciones</h3>
+              <p className="text-[#fff] ">
                 Entérate de eventos, competiciones y encuentros profesionales en toda España. No te pierdas ninguna
                 oportunidad.
               </p>
@@ -115,8 +115,8 @@ export default function HomePage() {
               <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
                 <Network className="h-6 w-6 text-[#FF3333]" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-primary">Networking Profesional</h3>
-              <p className="text-[#7FC0FF]">
+              <h3 className="mb-2 text-xl font-semibold text-[#170fdb]">Networking Profesional</h3>
+              <p className="text-[#fff]">
                 Establece contactos con otros profesionales, encuentra oportunidades de negocio y crea alianzas
                 estratégicas.
               </p>
@@ -126,8 +126,8 @@ export default function HomePage() {
               <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3">
                 <Star className="h-6 w-6 text-[#FF3333]" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-primary">Experiencias Reales</h3>
-              <p className="text-[#7FC0FF]">
+              <h3 className="mb-2 text-xl font-semibold text-[#170fdb]">Experiencias Reales</h3>
+              <p className="text-[#fff]">
                 Lee y comparte experiencias reales de otros barberos. Aprende de casos de éxito y evita errores comunes.
               </p>
             </Card>
@@ -150,24 +150,24 @@ export default function HomePage() {
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FF3333] text-2xl font-bold text-primary-foreground">
                 1
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-primary">Regístrate</h3>
-              <p className="text-[#7FC0FF]">Crea tu perfil profesional y únete a la comunidad exclusiva</p>
+              <h3 className="mb-2 text-xl font-semibold text-[#170fdb]">Regístrate</h3>
+              <p className="text-[#fff]">Crea tu perfil profesional y únete a la comunidad exclusiva</p>
             </div>
 
             <div className="text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FF3333] text-2xl font-bold text-primary-foreground">
                 2
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-primary">Conecta</h3>
-              <p className="text-[#7FC0FF]">Encuentra y conecta con barberos de tu zona o de toda España</p>
+              <h3 className="mb-2 text-xl font-semibold text-[#170fdb]">Conecta</h3>
+              <p className="text-[#fff]">Encuentra y conecta con barberos de tu zona o de toda España</p>
             </div>
 
             <div className="text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FF3333] text-2xl font-bold text-primary-foreground">
                 3
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-primary  ">Crece</h3>
-              <p className="text-[#7FC0FF] ">Comparte conocimientos, aprende y haz crecer tu negocio</p>
+              <h3 className="mb-2 text-xl font-semibold text-[#170fdb]  ">Crece</h3>
+              <p className="text-[#fff] ">Comparte conocimientos, aprende y haz crecer tu negocio</p>
             </div>
           </div>
         </div>
@@ -178,12 +178,12 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl rounded-lg border border-border bg-card p-8 text-center md:p-12">
             <Users className="mx-auto mb-6 h-16 w-16 text-[#FF3333]" />
-            <h2 className="mb-4 text-balance text-primary text-3xl font-bold md:text-4xl">Únete a la comunidad hoy</h2>
+            <h2 className="mb-4 text-balance text-[#170fdb] text-3xl font-bold md:text-4xl">Únete a la comunidad hoy</h2>
             <p className="mb-8 text-pretty text-lg text-muted-foreground">
-              Miles de barberos ya están conectados y haciendo crecer sus negocios. ¿A qué esperas?
+              Miles de barberos ya están conectados y haciendo crecer sus negocios.¿A qué esperas?
             </p>
             <Link href="/auth">
-              <Button size="lg" className="min-w-[250px] hover:text-primary-foreground">
+              <Button size="lg" className="min-w-[250px]">
                 Comenzar ahora
               </Button>
             </Link>

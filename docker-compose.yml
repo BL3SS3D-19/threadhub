@@ -45,7 +45,7 @@ services:
       - threadhub-network
     command: npm run dev
 
-  # Frontend React
+  # Frontend Next.js
   frontend:
     build:
       context: ./frontend
@@ -53,9 +53,9 @@ services:
     container_name: threadhub-frontend
     restart: unless-stopped
     ports:
-      - "5173:5173"
+      - "5173:9002" # host:contenedor http://localhost:5173
     environment:
-      - VITE_API_URL=http://localhost:3000
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
     depends_on:
       - backend
     networks:

@@ -11,10 +11,10 @@ RUN npm install
 COPY . .
 
 # Exponer puerto de Vite
-EXPOSE 5173
+EXPOSE 9002
 
-# Configurar Vite para escuchar en todas las interfaces
-ENV VITE_HOST=0.0.0.0
+# Variable de entorno para el backend
+ENV NEXT_PUBLIC_API_URL=http://localhost:3000
 
 # Comando de desarrollo
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["npm", "run", "dev"]

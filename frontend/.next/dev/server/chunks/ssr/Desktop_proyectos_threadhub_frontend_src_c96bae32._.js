@@ -21,7 +21,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$thre
 const buttonVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$proyectos$2f$threadhub$2f$frontend$2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cva"])("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0", {
     variants: {
         variant: {
-            default: "border border-input bg-primary text-[black] ",
+            default: "border border-input bg-[#170fdb] text-[white]  hover:bg-[#fff] hover:text-[#170fdb]",
             destructive: "bg-[0, 100%, 64%] text-destructive-foreground hover:bg-[0, 100%, 64%]",
             outline: "border border-input bg-background  hover:text-accent",
             secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
@@ -52,7 +52,7 @@ const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Des
         ...props
     }, void 0, false, {
         fileName: "[project]/Desktop/proyectos/threadhub/frontend/src/components/ui/button.tsx",
-        lineNumber: 46,
+        lineNumber: 47,
         columnNumber: 7
     }, ("TURBOPACK compile-time value", void 0));
 });

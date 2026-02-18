@@ -1,40 +1,16 @@
-'use client';
+interface SearchInputProps {
+  value: string;
+  onChange: (value: string) => void;
+}
 
-import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import { Input } from '@/components/ui/input';
-import { Search as SearchIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-
-export function SearchInput({ placeholder }: { placeholder: string }) {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
-
-  function handleSearch(formData: FormData) {
-    const term = formData.get('query') as string;
-    const params = new URLSearchParams(searchParams);
-    if (term) {
-      params.set('query', term);
-    } else {
-      params.delete('query');
-    }
-    replace(`${pathname}?${params.toString()}`);
-  }
-
+export function SearchInput({ value, onChange }: SearchInputProps) {
   return (
-    <form action={handleSearch} className="flex w-full max-w-sm items-center space-x-2">
-      <div className="relative flex-grow">
-        <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-        <Input
-          name="query"
-          type="search"
-          placeholder={placeholder}
-          defaultValue={searchParams.get('query')?.toString()}
-          className="pl-10"
-          aria-label="Search threads"
-        />
-      </div>
-      <Button type="submit" variant="secondary">Search</Button>
-    </form>
+    <input
+      type="text"
+      placeholder="Buscar Conversaciones..."
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full rounded-full border border-slate-700 bg-[#050509] px-4 py-2 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-red-500 focus:ring-2 focus:ring-red-500/40"
+    />
   );
 }

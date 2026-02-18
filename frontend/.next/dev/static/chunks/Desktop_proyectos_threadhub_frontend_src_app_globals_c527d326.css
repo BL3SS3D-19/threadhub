@@ -217,7 +217,7 @@ img, video {
   --border-input: 0 100% 64%;
   --input: 220 8% 18%;
   --primary: 203, 100%, 30%;
-  --primary-foreground: 0, 0%, 100%;
+  --primary-foreground: #170fdb;
   --destructive: 0, 100%, 64%;
   --destructive-foreground: 0, 100%, 64%;
   --secondary: 240 100% 60%;
@@ -476,10 +476,6 @@ button, .btn, label {
   left: .5rem;
 }
 
-.left-3 {
-  left: .75rem;
-}
-
 .left-\[50\%\] {
   left: 50%;
 }
@@ -632,10 +628,6 @@ button, .btn, label {
   margin-bottom: 2rem;
 }
 
-.ml-2 {
-  margin-left: .5rem;
-}
-
 .ml-auto {
   margin-left: auto;
 }
@@ -650,6 +642,10 @@ button, .btn, label {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .line-clamp-2 {
@@ -732,6 +728,10 @@ button, .btn, label {
   height: .875rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .h-4 {
   height: 1rem;
 }
@@ -794,14 +794,6 @@ button, .btn, label {
 
 .min-h-60 {
   min-height: 15rem;
-}
-
-.min-h-\[100px\] {
-  min-height: 100px;
-}
-
-.min-h-\[120px\] {
-  min-height: 120px;
 }
 
 .min-h-\[80px\] {
@@ -964,6 +956,10 @@ button, .btn, label {
   max-width: 64rem;
 }
 
+.max-w-6xl {
+  max-width: 72rem;
+}
+
 .max-w-\[--skeleton-width\] {
   max-width: var(--skeleton-width);
 }
@@ -976,10 +972,6 @@ button, .btn, label {
   max-width: 28rem;
 }
 
-.max-w-sm {
-  max-width: 24rem;
-}
-
 .flex-1 {
   flex: 1;
 }
@@ -988,7 +980,7 @@ button, .btn, label {
   flex-shrink: 0;
 }
 
-.flex-grow, .grow {
+.grow {
   flex-grow: 1;
 }
 
@@ -1074,6 +1066,10 @@ button, .btn, label {
   user-select: none;
 }
 
+.resize-none {
+  resize: none;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1102,10 +1098,6 @@ button, .btn, label {
   align-items: stretch;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -1130,6 +1122,10 @@ button, .btn, label {
   gap: .5rem;
 }
 
+.gap-3 {
+  gap: .75rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -1142,20 +1138,10 @@ button, .btn, label {
   gap: 2rem;
 }
 
-.gap-y-2 {
-  row-gap: .5rem;
-}
-
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(.25rem * var(--tw-space-x-reverse));
   margin-left: calc(.25rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-x-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -1182,6 +1168,12 @@ button, .btn, label {
   margin-bottom: calc(.5rem * var(--tw-space-y-reverse));
 }
 
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(.75rem * var(--tw-space-y-reverse));
+}
+
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1206,16 +1198,20 @@ button, .btn, label {
   white-space: nowrap;
 }
 
-.whitespace-pre-wrap {
-  white-space: pre-wrap;
-}
-
 .text-balance {
   text-wrap: balance;
 }
 
 .text-pretty {
   text-wrap: pretty;
+}
+
+.rounded {
+  border-radius: .25rem;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
 }
 
 .rounded-\[2px\] {
@@ -1314,6 +1310,16 @@ button, .btn, label {
   border-color: hsl(var(--sidebar-border));
 }
 
+.border-slate-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(51 65 85 / var(--tw-border-opacity));
+}
+
+.border-slate-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(30 41 59 / var(--tw-border-opacity));
+}
+
 .border-transparent {
   border-color: #0000;
 }
@@ -1324,6 +1330,21 @@ button, .btn, label {
 
 .border-t-transparent {
   border-top-color: #0000;
+}
+
+.bg-\[\#050509\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(5 5 9 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#0B0B10\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(11 11 16 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#170fdb\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 15 219 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#FF3333\] {
@@ -1428,10 +1449,6 @@ button, .btn, label {
   padding: .25rem;
 }
 
-.p-12 {
-  padding: 3rem;
-}
-
 .p-2 {
   padding: .5rem;
 }
@@ -1479,6 +1496,11 @@ button, .btn, label {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .px-8 {
@@ -1541,6 +1563,11 @@ button, .btn, label {
   padding-bottom: 1rem;
 }
 
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -1551,16 +1578,16 @@ button, .btn, label {
   padding-bottom: 2rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .pb-3 {
   padding-bottom: .75rem;
 }
 
 .pb-4 {
   padding-bottom: 1rem;
-}
-
-.pl-10 {
-  padding-left: 2.5rem;
 }
 
 .pl-4 {
@@ -1593,6 +1620,10 @@ button, .btn, label {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-left {
@@ -1714,6 +1745,11 @@ button, .btn, label {
   letter-spacing: .1em;
 }
 
+.text-\[\#170fdb\] {
+  --tw-text-opacity: 1;
+  color: rgb(23 15 219 / var(--tw-text-opacity));
+}
+
 .text-\[\#7FC0FF\] {
   --tw-text-opacity: 1;
   color: rgb(127 192 255 / var(--tw-text-opacity));
@@ -1724,9 +1760,9 @@ button, .btn, label {
   color: rgb(255 51 51 / var(--tw-text-opacity));
 }
 
-.text-\[black\] {
+.text-\[\#fff\] {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-\[hsl\(var\(--foreground\)\)\] {
@@ -1739,6 +1775,11 @@ button, .btn, label {
 
 .text-\[hsl\(var\(--primary-foreground\)\)\] {
   color: hsl(var(--primary-foreground));
+}
+
+.text-\[white\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-accent-foreground {
@@ -1769,10 +1810,6 @@ button, .btn, label {
   color: hsl(var(--foreground) / .5);
 }
 
-.text-foreground\/90 {
-  color: hsl(var(--foreground) / .9);
-}
-
 .text-muted-foreground {
   color: hsl(var(--muted-foreground));
 }
@@ -1789,6 +1826,11 @@ button, .btn, label {
   color: hsl(var(--primary-foreground));
 }
 
+.text-red-400 {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
+}
+
 .text-secondary-foreground {
   color: hsl(var(--secondary-foreground));
 }
@@ -1799,6 +1841,36 @@ button, .btn, label {
 
 .text-sidebar-foreground\/70 {
   color: hsl(var(--sidebar-foreground) / .7);
+}
+
+.text-slate-100 {
+  --tw-text-opacity: 1;
+  color: rgb(241 245 249 / var(--tw-text-opacity));
+}
+
+.text-slate-300 {
+  --tw-text-opacity: 1;
+  color: rgb(203 213 225 / var(--tw-text-opacity));
+}
+
+.text-slate-400 {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+
+.text-slate-50 {
+  --tw-text-opacity: 1;
+  color: rgb(248 250 252 / var(--tw-text-opacity));
+}
+
+.text-slate-500 {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .underline-offset-4 {
@@ -1870,6 +1942,21 @@ button, .btn, label {
   --tw-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-\[\#170fdb\] {
+  --tw-shadow-color: #170fdb;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.shadow-black\/40 {
+  --tw-shadow-color: #0006;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.shadow-blue-600\/40 {
+  --tw-shadow-color: #2563eb66;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .outline-none {
@@ -2053,6 +2140,11 @@ button, .btn, label {
   color: hsl(var(--muted-foreground));
 }
 
+.placeholder\:text-slate-500::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+
 .after\:absolute:after {
   content: var(--tw-content);
   position: absolute;
@@ -2087,18 +2179,18 @@ button, .btn, label {
   z-index: 20;
 }
 
-.hover\:scale-\[1\.01\]:hover {
-  --tw-scale-x: 1.01;
-  --tw-scale-y: 1.01;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .hover\:border-accent:hover {
   border-color: hsl(var(--accent));
 }
 
-.hover\:border-primary\/50:hover {
-  border-color: hsl(var(--primary) / .5);
+.hover\:border-red-500:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.hover\:bg-\[\#fff\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-accent:hover {
@@ -2131,6 +2223,11 @@ button, .btn, label {
 
 .hover\:bg-sidebar-accent:hover {
   background-color: hsl(var(--sidebar-accent));
+}
+
+.hover\:text-\[\#170fdb\]:hover {
+  --tw-text-opacity: 1;
+  color: rgb(23 15 219 / var(--tw-text-opacity));
 }
 
 .hover\:text-\[hsl\(var\(--accent\)\)\]:hover, .hover\:text-accent:hover {
@@ -2167,10 +2264,14 @@ button, .btn, label {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.hover\:shadow-lg:hover {
-  --tw-shadow: 0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+.hover\:ring-2:hover {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.hover\:ring-red-500\/40:hover {
+  --tw-ring-color: #ef444466;
 }
 
 .hover\:brightness-105:hover {
@@ -2181,6 +2282,16 @@ button, .btn, label {
 .hover\:after\:bg-sidebar-border:hover:after {
   content: var(--tw-content);
   background-color: hsl(var(--sidebar-border));
+}
+
+.focus\:border-\[\#170fdb\]:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(23 15 219 / var(--tw-border-opacity));
+}
+
+.focus\:border-red-500:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
 .focus\:bg-accent:focus {
@@ -2214,7 +2325,20 @@ button, .btn, label {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.focus\:ring-\[hsl\(var\(--ring\)\)\]:focus, .focus\:ring-ring:focus {
+.focus\:ring-\[\#170fdb\]:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(23 15 219 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-\[hsl\(var\(--ring\)\)\]:focus {
+  --tw-ring-color: hsl(var(--ring));
+}
+
+.focus\:ring-red-500\/40:focus {
+  --tw-ring-color: #ef444466;
+}
+
+.focus\:ring-ring:focus {
   --tw-ring-color: hsl(var(--ring));
 }
 
@@ -2273,6 +2397,10 @@ button, .btn, label {
 
 .disabled\:opacity-50:disabled {
   opacity: .5;
+}
+
+.disabled\:opacity-70:disabled {
+  opacity: .7;
 }
 
 .group\/menu-item:focus-within .group-focus-within\/menu-item\:opacity-100, .group\/menu-item:hover .group-hover\/menu-item\:opacity-100, .group:hover .group-hover\:opacity-100 {
@@ -2783,16 +2911,12 @@ button, .btn, label {
     margin-top: 0;
   }
 
-  .sm\:block {
-    display: block;
-  }
-
   .sm\:flex {
     display: flex;
   }
 
-  .sm\:max-w-\[425px\] {
-    max-width: 425px;
+  .sm\:w-80 {
+    width: 20rem;
   }
 
   .sm\:max-w-sm {

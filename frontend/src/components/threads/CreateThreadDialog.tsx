@@ -1,167 +1,87 @@
-'use client';
+import { useState } from 'react';
+import { CreateThreadDTO, ThreadResponse, UserResponse } from '@/lib/types';
+import { threadsService } from '@/services/threads.service';
+import { PlaceholderStyle, PlaceholderValue } from 'next/dist/shared/lib/get-img-props';
 
-import React, { useEffect, useRef } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useRouter } from 'next/navigation';
-import { useFormState, useFormStatus } from 'react-dom';
+interface Props {
+  currentUser: UserResponse;
+  onCreated?: (thread: ThreadResponse) => void;
+}
 
-import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useToast } from '@/hooks/use-toast';
-import { createThreadAction } from '@/lib/actions';
-import type { User } from '@/lib/types';
-import { PlusCircle } from 'lucide-react';
+export function CreateThreadDialog({ currentUser, onCreated }: Props) {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-const createThreadSchema = z.object({
-  title: z.string().min(5, 'Title must be at least 5 characters long.'),
-  content: z.string().min(10, 'Content must be at least 10 characters long.'),
-});
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
-type CreateThreadFormValues = z.infer<typeof createThreadSchema>;
-
-const initialState = {
-  message: '',
-  errors: {},
-  status: '',
-  threadId: null,
-};
-
-function CreateThreadForm({
-  onSuccess,
-}: {
-  onSuccess: (threadId: string) => void;
-}) {
-  const [state, formAction] = useFormState(createThreadAction, initialState);
-  const { toast } = useToast();
-
-  const form = useForm<CreateThreadFormValues>({
-    resolver: zodResolver(createThreadSchema),
-    defaultValues: {
-      title: '',
-      content: '',
-    },
-  });
-
-  useEffect(() => {
-    if (state.status === 'success' && state.threadId) {
-      toast({
-        title: 'Success!',
-        description: state.message,
+    try {
+      const newThread = await threadsService.createThread({
+        title,
+        content,
+        authorId: '19915422-c994-49ec-a841-942130bdf31f'
       });
-      onSuccess(state.threadId);
-    } else if (state.status === 'error') {
-      toast({
-        variant: 'destructive',
-        title: 'Error',
-        description: state.message,
-      });
+
+      setTitle('');
+      setContent('');
+
+      if (onCreated) onCreated(newThread);
+    } catch (err: any) {
+      setError(err.message || 'Failed to create thread');
+    } finally {
+      setLoading(false);
     }
-  }, [state, onSuccess, toast]);
-  
-  const SubmitButton = () => {
-    const { pending } = useFormStatus();
-    return (
-        <Button type="submit" disabled={pending}>
-            {pending ? 'Creating...' : 'Create Thread'}
-        </Button>
-    )
   }
 
   return (
-    <Form {...form}>
-      <form
-        action={formAction}
-        className="space-y-4"
-        onSubmit={form.handleSubmit(() => {
-          form.clearErrors();
-          form.trigger().then((isValid) => {
-            if (isValid) {
-              const formData = new FormData();
-              const data = form.getValues();
-              formData.append('title', data.title);
-              formData.append('content', data.content);
-              formAction(formData);
-            }
-          });
-        })}
-      >
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Title</FormLabel>
-              <FormControl>
-                <Input placeholder="What's the topic?" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+    <form
+      onSubmit={handleSubmit}
+      className="mt-6 w-full max-w-2xl rounded-2xl border border-slate-800 bg-[#0B0B10] px-6 py-5 shadow-md shadow-black/40 hover:border-red-500 hover:ring-2 hover:ring-red-500/40"
+    >
+      <div className="flex flex-col items-center mb-6">
+        <h2 className="text-base font-semibold text-white">
+          Crea una nueva conversacion
+        </h2>
+
+
+
+      </div>
+
+      <div className="space-y-3">
+        <input
+          placeholder="Titulo:"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full rounded-lg border border-slate-700 bg-[#050509] px-3 py-2 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-[#170fdb] focus:ring-2 focus:ring-[#170fdb]-500/40"
+          required
         />
-        <FormField
-          control={form.control}
-          name="content"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Your Message</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Share your thoughts..."
-                  className="min-h-[120px]"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+        <textarea
+          placeholder="Escribe tu mensaje aqui..."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className="h-32 w-full resize-none rounded-lg border border-slate-700 bg-[#050509] px-3 py-2 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-[#170fdb] focus:ring-2 focus:ring-[#170fdb]-500/40"
+          required
         />
-        <DialogFooter>
-          <SubmitButton />
-        </DialogFooter>
-      </form>
-    </Form>
-  );
-}
+        {error && (
+          <p className="text-sm text-red-400">
+            {error}
+          </p>
+        )}
+      </div>
 
-export function CreateThreadDialog({ currentUser }: { currentUser: User }) {
-  const router = useRouter();
-  const [open, setOpen] = React.useState(false);
-
-  const handleSuccess = (threadId: string) => {
-    setOpen(false);
-    router.push(`/threads/${threadId}`);
-  };
-
-  return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button>
-          <PlusCircle className="mr-2 h-4 w-4" />
-          Create Thread
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Create a new thread</DialogTitle>
-          <DialogDescription>
-            Start a new discussion by providing a title and your initial post.
-          </DialogDescription>
-        </DialogHeader>
-        <CreateThreadForm onSuccess={handleSuccess} />
-      </DialogContent>
-    </Dialog>
+      <div className="mt-6 flex justify-center">
+        <button
+          type="submit"
+          disabled={loading}
+          className="rounded-full bg-[#170fdb] px-4 py-2 text-sm font-medium text-white shadow-md shadow-blue-600/40 transition hover:bg-[#fff] hover:text-[#170fdb] disabled:cursor-not-allowed disabled:opacity-70"
+        >
+          {loading ? 'Creating...' : 'Create Thread'}
+        </button>
+      </div>
+    </form>
   );
 }
